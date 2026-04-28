@@ -1,22 +1,24 @@
 # daguasversel
 
-Sistema de gestión D'Aguas. Frontend Vite + React desplegado en Vercel; backend Express + Postgres desplegado en EasyPanel.
+Sistema de gestión D'Aguas. Monorepo con frontend (Vite + React) desplegado en Vercel y backend (Express + Postgres) desplegado en EasyPanel.
 
 ## Estructura
 
 ```
 daguasversel/
-├── src/                    # Frontend (Vite + React + TS)
-├── public/
-├── index.html
-├── vercel.json             # Config de Vercel (SPA rewrites)
-├── package.json            # Frontend
+├── frontend/               # Frontend Vite + React + TS
+│   ├── src/
+│   ├── public/
+│   ├── index.html
+│   ├── vercel.json         # Config de Vercel (SPA rewrites)
+│   └── package.json
 ├── backend/                # Backend Express + Knex + Postgres
 │   ├── src/
 │   ├── Dockerfile
 │   ├── package.json
 │   └── README.md           # Detalle del backend
-└── GUIA_GESTION_USUARIOS.md
+├── GUIA_GESTION_USUARIOS.md
+└── README.md
 ```
 
 ## Stack
@@ -50,6 +52,7 @@ npm run dev                # Arranca en :4000
 ### Frontend
 
 ```bash
+cd frontend
 cp .env.example .env       # VITE_API_BASE_URL apuntando al backend local
 npm install
 npm run dev                # Arranca en :8080
@@ -61,7 +64,7 @@ npm run dev                # Arranca en :8080
 
 1. **Crea servicio Postgres** en EasyPanel. Copia su `DATABASE_URL`.
 2. **Crea servicio "App"** apuntando al repo de GitHub.
-   - Root path: `backend/`
+   - Build Path: `backend`
    - EasyPanel detecta el `Dockerfile` automáticamente.
 3. **Variables de entorno** (sección Environment del servicio):
    - `DATABASE_URL` — connection string de Postgres
@@ -80,8 +83,8 @@ npm run dev                # Arranca en :8080
 ### Frontend en Vercel
 
 1. **Importar proyecto** desde GitHub.
+   - **Root Directory: `frontend`** ← importante, no la raíz del repo.
    - Vercel detecta Vite automáticamente. El `vercel.json` ya tiene la config de SPA rewrites (necesarios para react-router).
-   - Root directory: la raíz del repo (no `frontend/`).
 2. **Variables de entorno** (Build & Development settings → Environment Variables):
    - `VITE_API_BASE_URL` — URL pública del backend en EasyPanel + `/api` (ej. `https://daguasversel-api.easypanel.host/api`)
    - `VITE_N8N_WEBHOOK_URL` — opcional, si quieres sobreescribir el default
@@ -124,6 +127,7 @@ Si despliegas con BD vacía, configura `BOOTSTRAP_ADMIN_EMAIL` y `BOOTSTRAP_ADMI
 
 ```bash
 # Frontend
+cd frontend
 npm run dev          # Vite dev server
 npm run build        # Producción
 npm run lint
