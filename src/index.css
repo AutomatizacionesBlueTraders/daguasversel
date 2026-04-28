@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* D'Aguas - Design System based on company logo colors */
+
+@layer base {
+  :root {
+    /* Primary: Deep blue from logo (#1e4976) */
+    --primary: 209 60% 29%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Background: Clean white */
+    --background: 210 40% 98%;
+    --foreground: 209 60% 15%;
+
+    /* Card: White with subtle warmth */
+    --card: 0 0% 100%;
+    --card-foreground: 209 60% 15%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 209 60% 15%;
+
+    /* Secondary: Light blue accent */
+    --secondary: 200 60% 94%;
+    --secondary-foreground: 209 60% 25%;
+
+    /* Muted: Soft gray-blue */
+    --muted: 210 30% 95%;
+    --muted-foreground: 209 20% 45%;
+
+    /* Accent: Cyan from logo highlights */
+    --accent: 190 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive: Warm red */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success: Teal green */
+    --success: 160 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning: Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    /* Borders and inputs */
+    --border: 209 30% 85%;
+    --input: 209 30% 85%;
+    --ring: 209 60% 29%;
+
+    --radius: 0.625rem;
+
+    /* Sidebar */
+    --sidebar-background: 209 60% 20%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 190 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 209 50% 30%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 209 40% 35%;
+    --sidebar-ring: 190 70% 50%;
+  }
+
+  .dark {
+    --primary: 190 70% 50%;
+    --primary-foreground: 209 60% 10%;
+
+    --background: 209 60% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 209 50% 12%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 209 50% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    --secondary: 209 40% 18%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 209 30% 18%;
+    --muted-foreground: 210 20% 65%;
+
+    --accent: 190 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 160 50% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 80% 45%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 209 30% 25%;
+    --input: 209 30% 25%;
+    --ring: 190 70% 50%;
+
+    --sidebar-background: 209 60% 8%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 190 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 209 50% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 209 30% 20%;
+    --sidebar-ring: 190 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50;
+  }
+}
