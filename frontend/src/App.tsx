@@ -71,7 +71,7 @@ const App = () => (
               <Route
                 path="/estadisticas-bot"
                 element={
-                  <ProtectedRoute requireAdmin>
+                  <ProtectedRoute allowedRoles={['admin', 'usuario']}>
                     <AppLayout>
                       <EstadisticasBot />
                     </AppLayout>

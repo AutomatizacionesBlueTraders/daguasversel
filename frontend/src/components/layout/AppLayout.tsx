@@ -46,7 +46,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     { path: '/deudores', label: 'Búsqueda de Deudores', icon: Wallet, visible: !isTecnico },
     { path: '/facturacion-usuarios', label: 'Facturación Usuarios', icon: Receipt, visible: !isTecnico },
     { path: '/subir-archivo', label: 'Subir Archivo', icon: Upload, visible: !isTecnico },
-    { path: '/estadisticas-bot', label: 'Estadisticas Bot', icon: BarChart3, visible: isAdmin },
+    { path: '/estadisticas-bot', label: 'Estadisticas Bot', icon: BarChart3, visible: !isTecnico },
     { path: '/mensajes-bot', label: 'Mensajes Bot', icon: MessageCircle, visible: isAdmin },
     { path: '/usuarios', label: 'Usuarios', icon: Users, visible: isAdmin },
   ];

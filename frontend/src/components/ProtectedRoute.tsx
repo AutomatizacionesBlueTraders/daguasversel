@@ -1,15 +1,17 @@
 import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth, type AppRole } from '@/hooks/useAuth';
 import { Loader2 } from 'lucide-react';
 
 interface ProtectedRouteProps {
   children: ReactNode;
   requireAdmin?: boolean;
+  /** Roles que pueden entrar. Si se indica, reemplaza a requireAdmin. */
+  allowedRoles?: AppRole[];
 }
 
-export default function ProtectedRoute({ children, requireAdmin = false }: ProtectedRouteProps) {
-  const { user, loading, isAdmin, mustChangePassword } = useAuth();
+export default function ProtectedRoute({ children, requireAdmin = false, allowedRoles }: ProtectedRouteProps) {
+  const { user, loading, isAdmin, role, mustChangePassword } = useAuth();
 
   if (loading) {
     return (
@@ -28,7 +30,11 @@ export default function ProtectedRoute({ children, requireAdmin = false }: Prote
     return <Navigate to="/cambiar-password" replace />;
   }
 
-  if (requireAdmin && !isAdmin) {
+  const denied = allowedRoles
+    ? !role || !allowedRoles.includes(role)
+    : requireAdmin && !isAdmin;
+
+  if (denied) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
