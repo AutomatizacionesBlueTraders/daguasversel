@@ -81,7 +81,7 @@ const App = () => (
               <Route
                 path="/mensajes-bot"
                 element={
-                  <ProtectedRoute requireAdmin>
+                  <ProtectedRoute allowedRoles={['admin', 'usuario']}>
                     <AppLayout>
                       <MensajesBot />
                     </AppLayout>

@@ -47,7 +47,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     { path: '/facturacion-usuarios', label: 'Facturación Usuarios', icon: Receipt, visible: !isTecnico },
     { path: '/subir-archivo', label: 'Subir Archivo', icon: Upload, visible: !isTecnico },
     { path: '/estadisticas-bot', label: 'Estadisticas Bot', icon: BarChart3, visible: !isTecnico },
-    { path: '/mensajes-bot', label: 'Mensajes Bot', icon: MessageCircle, visible: isAdmin },
+    { path: '/mensajes-bot', label: 'Mensajes Bot', icon: MessageCircle, visible: !isTecnico },
     { path: '/usuarios', label: 'Usuarios', icon: Users, visible: isAdmin },
   ];
 
